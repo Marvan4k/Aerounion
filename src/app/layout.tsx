@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import NavMenu from "./components/navigation/navMenu";
+
 import { MAIN_NAV_ITEMS } from "./constants/navigation";
+import { I18nProvider } from "./providers/i18nProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = Geist_Mono({  
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -30,8 +33,16 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <NavMenu items={MAIN_NAV_ITEMS} className=""/>
-        {children}
+        <I18nProvider>
+          <NavMenu 
+            items={MAIN_NAV_ITEMS} 
+            parentClassName="flex gap-6 items-center" 
+            stantdrChildtClassName="text-white opacity-50 hover:opacity-100"
+            activeChildClassName="text-white-600 font-bold transition-all duration-300 [text-shadow:0_0_5px_rgba(255,255,255,0.8)]"
+            translationNamespace="mainNavMenu"
+          />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

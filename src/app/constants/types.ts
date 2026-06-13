@@ -2,5 +2,6 @@ import { ReactNode } from 'react';
 
 export interface NavItem {
     href: string;           
-    label: ReactNode;     
+    label: ReactNode | string;  
+    isJsxLabel?: boolean;
 }
