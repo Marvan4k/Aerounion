@@ -13,15 +13,22 @@ export function LanguageSwitcher() {
         <div className="flex gap-2">
         <button 
             onClick={() => changeLanguage('ru')}
-            className={i18n.language === 'ru' ? 'text-white font-bold [text-shadow:0_0_5px_rgba(255,255,255,0.8)]' : 'text-white opacity-50 hover:opacity-90'}
+            className={`
+                relative uppercase
+                ${i18n.language === 'ru' ? 'text-white font-bold [text-shadow:0_0_5px_rgba(255,255,255,0.8)]' : 'text-white opacity-50 hover:opacity-90'}
+            `}
         >
-            ru
+            rus
         </button>
+        <span className='inline-block bg-white/40 w-0.5 h-6'></span>
         <button 
             onClick={() => changeLanguage('en')}
-            className={i18n.language === 'en' ? 'text-white font-bold [text-shadow:0_0_5px_rgba(255,255,255,0.8)]' : 'text-white opacity-50 hover:opacity-90'}
+            className={`
+                uppercase
+                ${i18n.language === 'en' ? 'text-white font-bold [text-shadow:0_0_5px_rgba(255,255,255,0.8)]' : 'text-white opacity-50 hover:opacity-90'}
+                `}
         >
-            en
+            eng
         </button>
         </div>
     );

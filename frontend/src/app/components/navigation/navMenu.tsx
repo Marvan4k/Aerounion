@@ -24,12 +24,29 @@ export default function NavMenu(
     const {t} = useTranslation(translationNamespace);
     
     const renderedItems = useMemo(() => {
-        return items.map((item) => {
+        return items.map((item, index) => {
             const isActive = item.href === pathname;
+            const isExternalLink = item.href?.startsWith('tel:') || item.href?.startsWith('mailto:') || item.href?.startsWith('http');
+            const linkKey = item.href + index;
+            
+            if(isExternalLink) {
+                return (
+                    <a 
+                        key={linkKey}
+                        href={item.href}
+                        className={`
+                            ${stantdrChildtClassName}
+                        `}
+                    >
+                        {item.label}
+                    </a>
+                )
+            }
+            
             if(item.isJsxLabel){
                 return (
                     <Link 
-                        key={item.href}
+                        key={linkKey}
                         href={item.href}
                         className='flex'
                     >
@@ -39,7 +56,7 @@ export default function NavMenu(
             }
             return (
                 <Link 
-                    key={item.href}
+                    key={linkKey}
                     href={item.href}
                     className={`
                         ${isActive ? activeChildClassName : stantdrChildtClassName}
