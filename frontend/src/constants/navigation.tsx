@@ -1,4 +1,4 @@
-import { NavItem } from './types';
+import { NavItem } from '../components/navigation/types';
 import { LanguageSwitcher } from '../components/UI/languageSwitcher';
 import LogoWithText from '../components/UI/logoWithText';
 
