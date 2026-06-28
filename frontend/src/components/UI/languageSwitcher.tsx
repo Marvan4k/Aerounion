@@ -1,7 +1,7 @@
 'use client'
 import { useTranslation } from 'react-i18next';
-import { changeLanguage } from '../../configuration/i18next';
-import { useI18nReady } from '@/app/hooks/useI18nReady';
+import { changeLanguage } from '@/configuration/i18next';
+import { useI18nReady } from '@/hooks/useI18nReady';
 
 
 export function LanguageSwitcher() {

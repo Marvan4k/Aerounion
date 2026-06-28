@@ -3,11 +3,10 @@ import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import NavMenu from "./components/navigation/navMenu";
-
-import { MAIN_NAV_ITEMS } from "./constants/navigation";
-import { I18nProvider } from "./providers/i18nProvider";
-import SideMenu from "./components/navigation/sideMenu";
+import NavMenu from "@/components/navigation/navMenu";
+import SideMenu from "@/components/navigation/sideMenu";
+import { MAIN_NAV_ITEMS } from "@/constants/navigation";
+import { I18nProvider } from "@/providers/i18nProvider";
 
 const geistMono = Geist_Mono({  
   variable: "--font-geist-mono",
