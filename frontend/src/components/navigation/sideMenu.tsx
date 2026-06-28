@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import NavMenu from "./navMenu";
-import { SIDE_NAV_CONTACT_LINK, SIDE_NAV_MENU } from "@/app/constants/navigation";
+import { SIDE_NAV_CONTACT_LINK, SIDE_NAV_MENU } from "@/constants/navigation";
 import { Montserrat } from 'next/font/google'
 
 const montserrat = Montserrat({
@@ -52,7 +52,7 @@ export default function SideMenu() {
         >
             <span
                 className={`
-                  inline-block w-11 h-0.5 bg-white transition-all duration-300 relative
+                    inline-block w-11 h-0.5 bg-white transition-all duration-300 relative
                     ${isOpen ? 'rotate-45 bg-white' : ''}
                     before:content-[""] before:block before:w-11 before:h-0.5 before:bg-white before:transition-all before:duration-300 before:absolute before:left-0
                     after:content-[""] after:block after:w-11 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:absolute after:left-0

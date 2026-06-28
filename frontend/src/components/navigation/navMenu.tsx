@@ -1,5 +1,5 @@
 'use client'
-import { NavItem } from "@/app/constants/types";
+import { NavItem } from "@/components/navigation/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
@@ -15,7 +15,8 @@ interface navProps {
 
 export default function NavMenu(
     {
-        items, parentClassName = '',
+        items, 
+        parentClassName = '',
         stantdrChildtClassName = 'text-whithe',
         activeChildClassName = 'text-white-600 font-bold',
         translationNamespace
@@ -74,5 +75,6 @@ export default function NavMenu(
         </nav>
     )
 }
+
 
     
