@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req } from "@nestjs/common";
 import { HelicoptersService } from "./helicopters.service";
 import { CreateHelicopterDto } from "./dto/create-helicopters.dto";
 
@@ -11,5 +11,10 @@ export class HelicoptersContoller {
         @Body() createHelicopterDto: CreateHelicopterDto,
     ) {
         return this.helicoptersService.createHelicopter(createHelicopterDto);
+    }
+
+    @Get()
+    async getHelicopters() {
+        return this.helicoptersService.getHelicopters();
     }
 }

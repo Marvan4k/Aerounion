@@ -18,5 +18,9 @@ export class HelicoptersService {
         
         return await this.helicoptersRepository.save(helicopter)
     }
+
+    async getHelicopters() : Promise<Helicopters[]> {
+        return this.helicoptersRepository.find();
+    }
     
 }
