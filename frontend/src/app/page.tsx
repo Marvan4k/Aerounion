@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className="font-extrabold uppercase">{t("title")}</h1>
         <h1 className="uppercase">{t("subtitle")}</h1>
         <h3 className="font-extralight">{t("text")}</h3>
-        <ButtonStroke ref="/" textButton={`${t("button")}`} className="mt-7 "/>
+        <ButtonStroke ref="/models" textButton={`${t("button")}`} className="mt-7 "/>
       </div>
     </div>
   )
