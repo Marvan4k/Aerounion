@@ -19,8 +19,19 @@ export class HelicoptersService {
         return await this.helicoptersRepository.save(helicopter)
     }
 
-    async getHelicopters() : Promise<Helicopters[]> {
-        return this.helicoptersRepository.find();
+    async getHelicopters(limit: number, offset: number){
+        const [items, total] = await this.helicoptersRepository.findAndCount({
+            take: limit,
+            skip: offset,
+            order: {
+                id: 'ASC',
+            },
+        });
+
+        return {
+            items,
+            total,
+        };
     }
     
     async deleteHelicopter(id: string) : Promise<void> {

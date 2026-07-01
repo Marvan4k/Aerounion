@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000";
 
-export async function getHelicopters(){
-    const res = await fetch(`${API_URL}/helicopters`,{
+export async function getHelicopters(limit: number, offset: number){
+    const res = await fetch(`${API_URL}/helicopters?limit=${limit}&offset=${offset}`,{
         method: "GET",
     })
 

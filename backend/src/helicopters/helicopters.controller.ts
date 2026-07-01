@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Req } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Query, Req } from "@nestjs/common";
 import { HelicoptersService } from "./helicopters.service";
 import { CreateHelicopterDto } from "./dto/create-helicopters.dto";
 
@@ -14,8 +14,11 @@ export class HelicoptersContoller {
     }
 
     @Get()
-    async getHelicopters() {
-        return this.helicoptersService.getHelicopters();
+    async getHelicopters(
+        @Query('limit') limit = 10,
+        @Query('offset') offset = 0,
+    ) {
+        return this.helicoptersService.getHelicopters(Number(limit), Number(offset));
     }
 
     @Delete(':id')
