@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Helicopters } from "./helicopters.entity";
@@ -23,4 +23,12 @@ export class HelicoptersService {
         return this.helicoptersRepository.find();
     }
     
+    async deleteHelicopter(id: string) : Promise<void> {
+        const result = await this.helicoptersRepository.delete(id);
+
+        if (result.affected === 0) {
+            throw new NotFoundException(`Helicopter with id ${id} not found`);
+        }        
+    }
+
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Req } from "@nestjs/common";
 import { HelicoptersService } from "./helicopters.service";
 import { CreateHelicopterDto } from "./dto/create-helicopters.dto";
 
@@ -16,5 +16,16 @@ export class HelicoptersContoller {
     @Get()
     async getHelicopters() {
         return this.helicoptersService.getHelicopters();
+    }
+
+    @Delete(':id')
+    async deleteHelicopter(
+        @Param('id') id: string
+    ) {
+        await this.helicoptersService.deleteHelicopter(id);
+
+        return {
+            message: 'Helicopter deleted successfully',
+        };
     }
 }
