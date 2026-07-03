@@ -42,4 +42,15 @@ export class HelicoptersService {
         }        
     }
 
+    async getHelicopterById(id: number) : Promise<Helicopters> {
+        const helicopter = await this.helicoptersRepository.findOneBy(
+            { id: id }
+        );
+
+        if (!helicopter) {
+            throw new NotFoundException(`Helicopter with id ${id} not found`);
+        }
+
+        return helicopter;
+    }
 }

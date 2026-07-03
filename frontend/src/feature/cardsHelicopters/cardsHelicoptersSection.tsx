@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getHelicopters } from "./cardsHelicoptersAPI";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 
 const montserrat = Montserrat({
@@ -26,10 +27,12 @@ type Card = {
 }
 
 export default function CardsHelicoptersSection(){
+    const {t} = useTranslation("helicopters")
     const [cards, setCards] = useState<Card[]>([]);
     const [offset, setOffset] = useState(0);
     const [total, setTotal] = useState(0);
     const limit = 8;
+    const initialized = useRef(false);
 
     const loadCards = async () => {
         try {
@@ -46,6 +49,10 @@ export default function CardsHelicoptersSection(){
         }
     };
     useEffect(() => {
+        if (initialized.current) return;
+
+        initialized.current = true;
+
         loadCards();
     }, []);
 
@@ -62,7 +69,7 @@ export default function CardsHelicoptersSection(){
                         ">
                             <div>
                                 <Image src='/iconsCard/speed.svg' alt="speed" width={20} height={16} />
-                                <p className="font-extralight ml-2 leading-none">{helicopter.maxSpeed} km/h</p> 
+                                <p className="font-extralight ml-2 leading-none">{helicopter.maxSpeed} {t("speed")}</p> 
                             </div>
                             <div>
                                 <Image src='/iconsCard/capacity.svg' alt="capacity" width={20} height={20} />
@@ -70,9 +77,9 @@ export default function CardsHelicoptersSection(){
                             </div>
                             <div>
                                 <Image src='/iconsCard/range.svg' alt="range" width={25} height={25} />
-                                <p className="ml-2 leading-none">{helicopter.range} km</p> 
+                                <p className="ml-2 leading-none">{helicopter.range} {t("range")}</p> 
                             </div>
-                            <Link href='#' className="bg-[#292929]">Подробнее</Link>
+                            <Link href={`/models/${helicopter.id}`} className="bg-[#292929]">{t("button")}</Link>
                         </div>
                     </div>
                 ))}
@@ -83,7 +90,7 @@ export default function CardsHelicoptersSection(){
                         onClick={loadCards}
                         className="px-6 py-3 bg-white text-black rounded hover:bg-gray-300 transition"
                     >
-                        Показать ещё
+                        {t("showMore")}
                     </button>
                 </div>
             )}

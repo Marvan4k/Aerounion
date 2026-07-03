@@ -13,3 +13,16 @@ export async function getHelicopters(limit: number, offset: number){
 
     return res.json();
 }
+
+export async function getHelicopterById(id: number) {
+
+    const res = await fetch(`${API_URL}/helicopters/${id}`);
+
+    if (!res.ok) {
+        throw new Error(
+            "Cannot load helicopter"
+        );
+    }
+
+    return res.json();
+}
