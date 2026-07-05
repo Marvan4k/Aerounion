@@ -1,6 +1,14 @@
 
 import ModelView from "@/components/model/Model";
+import ButtonStroke from "@/components/UI/buttonStroke";
 import { getHelicopterById } from "@/feature/cardsHelicopters/cardsHelicoptersAPI";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  weight: '700', 
+  subsets: ['latin'],
+  style: 'normal',
+})
 
 type Props = {
     params: Promise<{
@@ -13,10 +21,13 @@ export default async function HelicopterPage({ params }: Props) {
     const helicopter = await getHelicopterById(Number(id));
     
     return (
-        <div className="mt-30 ml-40">
-            <h1>{helicopter.name}</h1>
-            <p>{helicopter.description}</p>
-            <p>{helicopter.price}</p>
+        <div className="mt-30 ml-40 flex">
+            <div className="mt-30 w-110 z-1">
+                <p className={`tracking-[5%] text-6xl scale-101 max-w-130 ${montserrat.className}`}>{helicopter.name}</p>
+                <p className="opacity-80 text-lg mt-2">{helicopter.description}</p>
+                <p className="opacity-55 mt-4">Значимость этих проблем настолько очевидна, что укрепление и развитие структуры требуют определения и уточнения дальнейших направлений развития. {helicopter.description}</p>
+                <ButtonStroke href="/models" textButton={`Заказать`} className="mt-7 "/>
+            </div>
             <ModelView modelPath={`/${helicopter.modelUrl}/scene.gltf`} />
         </div>
     );

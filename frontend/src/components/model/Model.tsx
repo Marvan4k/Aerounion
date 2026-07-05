@@ -1,7 +1,7 @@
 "use client"
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 
 type ModelProps = {
     path: string;
@@ -16,20 +16,36 @@ function Model({ path }: ModelProps) {
   return <primitive object={scene} scale={1.5} />;
 }
 
+function OscillatingModel({ path }: ModelProps) {
+  const { scene } = useGLTF(path);
+  const ref = useRef<any>(null);
+
+  useFrame(({ clock }) => {
+    if (ref.current) {
+      const time = clock.getElapsedTime();
+      ref.current.rotation.y = Math.sin(time * 0.5) * 0.5;
+    }
+  });
+  
+  return <primitive ref={ref} object={scene} scale={1.5} />;
+}
+
 export default function ModelView({ modelPath } : ModelViewProps) {
   return (
-    <div style={{ width: '500px', height: '500px', background: '#f0f0f0' }}>
-      <Canvas camera={{ position: [4, 3, 5] }}>
+    <div style={{ marginTop: '-60px', marginLeft: '20px', zIndex: 0, position: 'absolute', width: '1800px', height: '900px', background: 'transparent' }}>
+      <Canvas 
+        camera={{ position: [7, 5, 8], fov: 60 }}
+        gl={{ alpha: true }}
+        style={{ background: "transparent" }}
+      >
         <ambientLight intensity={0.8} />
         <directionalLight position={[5, 5, 5]} />
         <Suspense>
-          <Model path={modelPath} />
+          <OscillatingModel path={modelPath} />
           <OrbitControls 
-            enableZoom={true}
+            enableZoom={false}
             enablePan={false}
-            enableRotate={true}
-            minDistance={2}
-            maxDistance={8}
+            enableRotate={false}  
           />
         </Suspense>
       </Canvas>

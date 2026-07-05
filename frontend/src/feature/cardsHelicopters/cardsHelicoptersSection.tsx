@@ -26,19 +26,34 @@ type Card = {
     modelUrl: string,
 }
 
+const getLimit = () => {
+    const sidebar = 80;
+    const cardWidth = 310;
+
+    const availableWidth = window.innerWidth - sidebar;
+    const columns = Math.max(Math.floor(availableWidth / cardWidth), 1);
+
+    return columns * 2;
+};
+
 export default function CardsHelicoptersSection(){
     const {t} = useTranslation("helicopters")
     const [cards, setCards] = useState<Card[]>([]);
     const [offset, setOffset] = useState(0);
     const [total, setTotal] = useState(0);
-    const limit = 8;
     const initialized = useRef(false);
+
 
     const loadCards = async () => {
         try {
+            const limit = getLimit();
             const data = await getHelicopters(limit, offset);
             
-            setCards(prev => [...prev, ...data.items]);
+            setCards(prev => {
+                const updated = [...prev, ...data.items];
+                setOffset(updated.length);
+                return updated;
+            });
             
             setTotal(data.total);
             
@@ -48,7 +63,9 @@ export default function CardsHelicoptersSection(){
             console.log(error)
         }
     };
+    
     useEffect(() => {
+
         if (initialized.current) return;
 
         initialized.current = true;
@@ -58,9 +75,9 @@ export default function CardsHelicoptersSection(){
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-y-10 mt-30 ml-40 h-full">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(310px,1fr))]  gap-y-10 mt-30 mb-10 ml-40 h-full">
                 {cards.map((helicopter) => (
-                    <div className="group bg-[#232323] w-75 h-87.5 hover:scale-110 transition-all duration-300"  key={helicopter.id}>
+                    <Link href={`/models/${helicopter.id}`} className="group bg-[#232323] w-75 h-87.5 hover:scale-110 transition-all duration-300"  key={helicopter.id}>
                         <p className={`text-xl text-center mt-5 mb-2.5 tracking-[5%] ${montserrat.className}`}>{helicopter.name}</p>
                         <Image className="opacity-40 group-hover:opacity-100 transition-all duration-300 min-h-52.5" src={helicopter.previewImage} alt={helicopter.name} width={280} height={215} />
                         <div className="
@@ -79,13 +96,13 @@ export default function CardsHelicoptersSection(){
                                 <Image src='/iconsCard/range.svg' alt="range" width={25} height={25} />
                                 <p className="ml-2 leading-none">{helicopter.range} {t("range")}</p> 
                             </div>
-                            <Link href={`/models/${helicopter.id}`} className="bg-[#292929]">{t("button")}</Link>
+                            <div className="bg-[#292929]">{t("button")}</div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
             {cards.length < total && (
-                <div className="flex justify-center my-10">
+                <div className="flex justify-center mb-10">
                     <button
                         onClick={loadCards}
                         className="px-6 py-3 bg-white text-black rounded hover:bg-gray-300 transition"

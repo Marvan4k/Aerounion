@@ -28,12 +28,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col relative">
+      <body className="min-h-full flex flex-col overflow-x-hidden relative">
         <I18nProvider>
           <SideMenu />
           <NavMenu 
             items={MAIN_NAV_ITEMS} 
-            parentClassName="flex fixed top-0 left-[160px] mt-10 gap-6 items-center justify-content z-1" 
+            parentClassName="flex fixed w-[calc(100%-200px)] ml-[160px] top-0 mt-10 gap-6 items-center justify-between z-1 " 
             stantdrChildtClassName="mr-4 text-white opacity-50 hover:opacity-100"
             activeChildClassName="text-white-600 font-bold transition-all duration-300 [text-shadow:0_0_5px_rgba(255,255,255,0.8)]"
             translationNamespace="mainNavMenu"
