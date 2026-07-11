@@ -1,33 +1,30 @@
-# AeroUnion
+# 🚁 AeroUnion
 
-Modern helicopter marketplace built with Next.js and NestJS.
+AeroUnion is a full-stack helicopter marketplace built with **Next.js**, **NestJS**, and **PostgreSQL**.
 
-A full-stack pet project for browsing helicopters, viewing detailed product information, and exploring a 3D model viewer in a polished storefront experience.
+The project demonstrates a modern web application architecture with a responsive frontend, REST API, Dockerized database, multilingual support, and an interactive 3D helicopter viewer powered by React Three Fiber.
 
-## Screenshots
+---
 
-Screenshots can be added here to make the project look more professional on GitHub.
+## ✨ Features
 
-- Home page
-- Helicopter catalog
-- Product details page
-- 3D viewer
+- 🚁 Helicopter catalog
+- 📄 Detailed helicopter pages
+- 🛰 Interactive 3D helicopter viewer
+- 🌍 Multi-language support (i18next)
+- 📱 Responsive design
+- ⚡ REST API built with NestJS
+- 🗄 PostgreSQL database
+- 🐳 Dockerized local development
+- 🔄 Dynamic data loading with pagination
 
-## Features
+---
 
-- Helicopter catalog with pagination support
-- Detailed product pages with specifications
-- Interactive 3D model viewer built with React Three Fiber
-- Responsive UI for desktop and mobile layouts
-- Multi-language support using i18next
-- REST API for listing and retrieving helicopter data
-- PostgreSQL database with Docker-based setup
-
-## Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
 
-- Next.js
+- Next.js 16
 - React
 - TypeScript
 - Tailwind CSS
@@ -40,64 +37,112 @@ Screenshots can be added here to make the project look more professional on GitH
 - NestJS
 - TypeORM
 - PostgreSQL
-- class-validator / class-transformer
+- class-validator
+- class-transformer
 
 ### Infrastructure
 
+- Docker
 - Docker Compose
 - PostgreSQL 16
 
-## Architecture
+---
 
-The project is split into two independent applications:
+# 📸 Screenshots
 
-- `frontend/` — user interface, pages, localizations, model rendering
-- `backend/` — REST API, business logic, database access
+## Home Page
 
-Frontend communicates with the backend through HTTP requests to the NestJS API. The PostgreSQL database is launched separately via Docker.
+> _Coming soon_
 
-## Project Structure
+## Helicopter Catalog
 
-```text
+> _Coming soon_
+
+## Product Details
+
+> _Coming soon_
+
+## 3D Viewer
+
+> _Coming soon_
+
+---
+
+# 🏗 Architecture
+
+```
+                 Browser
+                     │
+                     ▼
+            Next.js Frontend
+                     │
+              REST API (HTTP)
+                     │
+                     ▼
+             NestJS Backend
+                     │
+                 TypeORM
+                     │
+                     ▼
+                PostgreSQL
+```
+
+The project is divided into two independent applications.
+
+```
 frontend/
 ├── app/
 ├── components/
 ├── configuration/
 ├── constants/
-├── feature/
+├── features/
 ├── hooks/
 ├── locales/
-└── providers/
+├── providers/
+├── services/
+└── types/
 
 backend/
 ├── src/
+│   ├── auth/
 │   ├── helicopters/
+│   ├── users/
+│   ├── common/
 │   └── app.module.ts
-└── package.json
+├── package.json
+└── tsconfig.json
 
 docker-compose.yml
 ```
 
-## Installation
+---
 
-### 1. Clone the repository
+# 🚀 Getting Started
+
+## Clone the repository
 
 ```bash
-git clone <repository-url>
-cd AeroUnion
+git clone https://github.com/Marvan4k/Aerounion.git
+cd Aerounion
 ```
 
-### 2. Install dependencies
+## Install dependencies
+
+Frontend
 
 ```bash
 cd frontend
 npm install
+```
 
+Backend
+
+```bash
 cd ../backend
 npm install
 ```
 
-### 3. Start PostgreSQL with Docker
+## Start PostgreSQL
 
 From the project root:
 
@@ -105,70 +150,140 @@ From the project root:
 docker compose up -d
 ```
 
-### 4. Start the backend
+## Run Backend
 
 ```bash
 cd backend
 npm run start:dev
 ```
 
-### 5. Start the frontend
+Backend:
+
+```
+http://localhost:3000
+```
+
+## Run Frontend
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-The frontend runs on `http://localhost:3001` and the backend API on `http://localhost:3000`.
+Frontend:
 
-## Environment and Database Configuration
+```
+http://localhost:3001
+```
 
-The database is configured in Docker Compose and connected by the backend via the TypeORM configuration in the NestJS app.
+---
 
-Default local setup:
+# ⚙ Environment Variables
 
-- Database: `aerounion`
-- Username: `postgres`
-- Password: `postgres`
-- Host: `localhost`
-- Port: `5432`
+Create a `.env` file inside the backend directory.
 
-## API
+Example:
+
+```env
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=aerounion
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+
+JWT_SECRET=your_secret_key
+```
+
+---
+
+# 📡 API
 
 ### Helicopters
 
 ```http
 GET /helicopters?limit=10&offset=0
+```
+
+Returns a paginated list of helicopters.
+
+```http
 GET /helicopters/:id
+```
+
+Returns helicopter details.
+
+```http
 POST /helicopters
+```
+
+Creates a new helicopter.
+
+```http
 DELETE /helicopters/:id
 ```
 
-## Roadmap
+Deletes a helicopter.
 
-- [x] Backend foundation
-- [x] Dockerized PostgreSQL
+---
+
+# 🗺 Roadmap
+
+## Completed
+
+- [x] Next.js frontend
+- [x] NestJS backend
+- [x] PostgreSQL integration
+- [x] Docker support
+- [x] REST API
 - [x] Helicopter catalog
-- [x] Detailed product page
-- [x] 3D viewer
-- [ ] Shopping cart
-- [ ] Order workflow
-- [ ] Admin panel
-- [ ] Authentication and user accounts
+- [x] Product details page
+- [x] Interactive 3D viewer
+- [x] Pagination
+- [x] Internationalization (i18next)
 
-## What I Learned
+## Planned
+
+- [ ] Authentication (JWT)
+- [ ] User accounts
+- [ ] Shopping cart
+- [ ] Checkout page
+- [ ] Product filters
+- [ ] Search
+- [ ] Favorites
+- [ ] Admin dashboard
+- [ ] Order management
+
+---
+
+# 🎯 Project Goals
+
+The main purpose of this project is to improve full-stack development skills by building a production-like web application.
+
+During development the project explores:
 
 - Next.js App Router
-- NestJS REST architecture
-- TypeORM + PostgreSQL integration
-- React Three Fiber for 3D rendering
-- Internationalization with i18next
-- Docker-based local development workflow
+- NestJS architecture
+- REST API design
+- PostgreSQL + TypeORM
+- Docker
+- React Three Fiber
+- Internationalization
+- Responsive UI development
 
-## Why This Project Is Interesting
+---
 
-This project combines a modern landing page, a product catalog, a detailed product experience, and an interactive 3D viewer in one application. It is a good example of a full-stack portfolio project that demonstrates both frontend polish and backend structure.
+# 👨‍💻 Author
 
-## License
+**Roman Marvanov**
 
-This project is currently for educational and portfolio purposes.
+GitHub:
+https://github.com/Marvan4k
+
+LinkedIn:
+_Coming soon_
+
+---
+
+# 📄 License
+
+This project was created for educational and portfolio purposes.
