@@ -34,28 +34,28 @@ export default async function HelicopterPage({ params }: Props) {
             <table className="w-[calc(100%-200px)] overflow-hidden mb-10 ml-40 mt-45 table-fixed border-collapse border border-[#292929] rounded-2xl bg-primary z-1">
                 <thead>
                     <tr>
-                        <th colSpan={2} className="w-1/2 border border-[#292929] px-4 py-2 text-left">Характеристики:</th>
+                        <th colSpan={2} className="w-1/2 uppercase border border-[#292929] p-4 text-left">Характеристики:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="border border-[#292929] px-4 py-2 font-medium">Цена</td>
+                        <td className="border border-[#292929] px-4 py-2 font-medium opacity-50">Цена</td>
                         <td className="border border-[#292929] px-4 py-2">{helicopter.price}</td>
                     </tr>
                     <tr>
-                        <td className="border border-[#292929] px-4 py-2 font-medium">Максимальная скорость</td>
+                        <td className="border border-[#292929] px-4 py-2 font-medium opacity-50">Максимальная скорость</td>
                         <td className="border border-[#292929] px-4 py-2">{helicopter.maxSpeed}</td>
                     </tr>
                     <tr>
-                        <td className="border border-[#292929] px-4 py-2 font-medium">Вместимость</td>
+                        <td className="border border-[#292929] px-4 py-2 font-medium opacity-50">Вместимость</td>
                         <td className="border border-[#292929] px-4 py-2">{helicopter.capacity}</td>
                     </tr>
                     <tr>
-                        <td className="border border-[#292929] px-4 py-2 font-medium">Дальность</td>
+                        <td className="border border-[#292929] px-4 py-2 font-medium opacity-50">Дальность</td>
                         <td className="border border-[#292929] px-4 py-2">{helicopter.range}</td>
                     </tr>
                     <tr>
-                        <td className="border border-[#292929] px-4 py-2 font-medium">Время полета</td>
+                        <td className="border border-[#292929] px-4 py-2 font-medium opacity-50">Время полета</td>
                         <td className="border border-[#292929] px-4 py-2">{helicopter.flightTime}</td>
                     </tr>
                 </tbody>

@@ -86,15 +86,15 @@ export default function CardsHelicoptersSection(){
                         ">
                             <div>
                                 <Image src='/iconsCard/speed.svg' alt="speed" width={20} height={16} />
-                                <p className="font-extralight ml-2 leading-none">{helicopter.maxSpeed} {t("speed")}</p> 
+                                <p className="font-extralight ml-2 mt-0.75 leading-none">{helicopter.maxSpeed} {t("speed")}</p> 
                             </div>
                             <div>
                                 <Image src='/iconsCard/capacity.svg' alt="capacity" width={20} height={20} />
-                                <p className="ml-2 leading-none">{helicopter.capacity}</p> 
+                                <p className="ml-2 mt-0.75 leading-none">{helicopter.capacity}</p> 
                             </div>
                             <div>
                                 <Image src='/iconsCard/range.svg' alt="range" width={25} height={25} />
-                                <p className="ml-2 leading-none">{helicopter.range} {t("range")}</p> 
+                                <p className="ml-2 mt-0.75 leading-none">{helicopter.range} {t("range")}</p> 
                             </div>
                             <div className="bg-[#292929]">{t("button")}</div>
                         </div>

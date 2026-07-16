@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../globals.css";
 
 import NavMenu from "@/components/navigation/navMenu";
 import SideMenu from "@/components/navigation/sideMenu";
@@ -24,16 +24,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col overflow-x-hidden relative">
-        <I18nProvider>
+      <>
+          <SideMenu />
+          <NavMenu 
+            items={MAIN_NAV_ITEMS} 
+            parentClassName="flex fixed w-full pl-[160px] pt-10 pr-7 top-0 gap-6 items-center justify-between z-1 " 
+            stantdrChildtClassName="mr-4 text-white opacity-50 hover:opacity-100"
+            activeChildClassName="text-white-600 font-bold transition-all duration-300 [text-shadow:0_0_5px_rgba(255,255,255,0.8)]"
+            translationNamespace="mainNavMenu"
+          />
           {children}
-        </I18nProvider>
-      </body>
-    </html>
+      </>
   );
 }
 
