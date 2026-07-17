@@ -39,8 +39,8 @@ export default function SideMenu() {
         <aside 
             ref={menuRef}
             className={`
-                fixed  top-0 h-full w-155 text-white transition-all 
-                duration-500 z-2 bg-linear-to-r from-[#1F1F1F] to-[#121212] scrollbar-none
+                fixed  top-0 h-full w-155 text-white transition-all
+                duration-500 z-11 bg-linear-to-r from-[#1F1F1F] to-[#121212] scrollbar-none
                 ${isOpen ? 'left-0 overflow-y-auto ' : '-left-130 overflow-none'}
             `}>
         <button 

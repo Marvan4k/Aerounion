@@ -28,7 +28,7 @@ export default function RootLayout({
           <SideMenu />
           <NavMenu 
             items={MAIN_NAV_ITEMS} 
-            parentClassName="flex fixed w-full pl-[160px] pt-10 pr-7 pb-5 bg-linear-to-r from-[#1F1F1F] to-[#161616] top-0  gap-6 items-center justify-between z-1 " 
+            parentClassName="flex fixed w-full pl-[160px] pt-10 pr-7 pb-5 bg-linear-to-r from-[#1F1F1F] to-[#161616] top-0  gap-6 items-center justify-between z-10 " 
             stantdrChildtClassName="mr-4 text-white opacity-50 hover:opacity-100"
             activeChildClassName="mr-4 text-white-600 font-bold transition-all duration-300 [text-shadow:0_0_5px_rgba(255,255,255,0.8)]"
             translationNamespace="mainNavMenu"

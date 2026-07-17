@@ -85,15 +85,15 @@ export default function CardsHelicoptersSection(){
                             *:flex *:justify-center *:items-center *:border-[#292929] *:border-2 *:h-10
                         ">
                             <div>
-                                <Image src='/iconsCard/speed.svg' alt="speed" width={20} height={16} />
+                                <Image src='/iconsCards/speed.svg' alt="speed" width={20} height={16} />
                                 <p className="font-extralight ml-2 mt-0.75 leading-none">{helicopter.maxSpeed} {t("speed")}</p> 
                             </div>
                             <div>
-                                <Image src='/iconsCard/capacity.svg' alt="capacity" width={20} height={20} />
+                                <Image src='/iconsCards/capacity.svg' alt="capacity" width={20} height={20} />
                                 <p className="ml-2 mt-0.75 leading-none">{helicopter.capacity}</p> 
                             </div>
                             <div>
-                                <Image src='/iconsCard/range.svg' alt="range" width={25} height={25} />
+                                <Image src='/iconsCards/range.svg' alt="range" width={25} height={25} />
                                 <p className="ml-2 mt-0.75 leading-none">{helicopter.range} {t("range")}</p> 
                             </div>
                             <div className="bg-[#292929]">{t("button")}</div>
