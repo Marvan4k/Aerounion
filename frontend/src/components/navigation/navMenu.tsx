@@ -26,7 +26,7 @@ export default function NavMenu(
     
     const renderedItems = useMemo(() => {
         return items.map((item, index) => {
-            const isActive = item.href === pathname;
+            const isActive = pathname.startsWith(item.href);
             const isExternalLink = item.href?.startsWith('tel:') || item.href?.startsWith('mailto:') || item.href?.startsWith('http');
             const linkKey = item.href + index;
             

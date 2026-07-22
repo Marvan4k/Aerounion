@@ -18,7 +18,7 @@ export default function Home() {
       </video>
 
       <div className={`ml-40 mt-64 max-w-193.75`}>
-        <h1 className="font-extrabold uppercase">{t("title")}</h1>
+        <h1 className="font-bold uppercase">{t("title")}</h1>
         <h1 className="uppercase">{t("subtitle")}</h1>
         <h3 className="font-extralight">{t("text")}</h3>
         <ButtonStroke href="/models" textButton={`${t("button")}`} className="mt-7 "/>
